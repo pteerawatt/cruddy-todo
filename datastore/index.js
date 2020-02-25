@@ -12,14 +12,14 @@ exports.create = (text, callback) => {
   // want to create new textfile as {CounterString}.txt with content as {text}
   counter.getNextUniqueId((err, uniqueID) =>{
     // write text with name uniqueID.txt with text as content
-    let dirForID = `${exports.dataDir}/${uniqueID}`;
+    let dirForID = path.join(exports.dataDir, `${uniqueID}.txt`);
     // console.log(dirForID);
-    fs.writeFile(dirForID, text, (err) = {
-      // if (err) {
-      //   throw ('error writing text')
-      // } else {
-
-      // }
+    fs.writeFile(dirForID, text, (err) => {
+      if (err) {
+        throw ('Unable to create item');
+      } else {
+        callback(null, uniqueID);
+      }
     });
   });
 };
