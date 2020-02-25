@@ -8,12 +8,19 @@ var items = {};
 // Public API - Fix these CRUD functions ///////////////////////////////////////
 
 exports.create = (text, callback) => {
-  // var id = counter.getNextUniqueId();
-  // items[id] = text;
-  // callback(null, { id, text });
+  // whatever cb we use, will have access to (null, counterString)
+  // want to create new textfile as {CounterString}.txt with content as {text}
+  counter.getNextUniqueId((err, uniqueID) =>{
+    // write text with name uniqueID.txt with text as content
+    let dirForID = `${exports.dataDir}/${uniqueID}`;
+    // console.log(dirForID);
+    fs.writeFile(dirForID, text, (err) = {
+      // if (err) {
+      //   throw ('error writing text')
+      // } else {
 
-  counter.getNextUniqueId(() => {
-
+      // }
+    });
   });
 };
 
