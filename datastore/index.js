@@ -18,7 +18,8 @@ exports.create = (text, callback) => {
       if (err) {
         throw ('Unable to create item');
       } else {
-        callback(null, uniqueID);
+        callback(null, {'id': uniqueID, 'text': text});
+      
       }
     });
   });
